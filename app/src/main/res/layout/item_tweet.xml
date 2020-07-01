@@ -6,6 +6,27 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
+    <TextView
+        android:id="@+id/tvBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvScreenName"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        tools:text="This is my sample text!!" />
+
+
+    <ImageView
+        android:id="@+id/tweetPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvBody"
+        android:layout_alignStart="@id/tvBody"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
@@ -27,13 +48,15 @@
         tools:text="usrname1234" />
 
     <TextView
-        android:id="@+id/tvBody"
+        android:id="@+id/relativeTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvScreenName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        tools:text="This is my sample text!!" />
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="16dp"
+        android:text="TextView"
+        tools:text="9 hours" />
 
 </RelativeLayout>

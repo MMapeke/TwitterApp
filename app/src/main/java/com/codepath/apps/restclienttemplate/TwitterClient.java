@@ -51,11 +51,26 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e RequestParams params = new RequestParams("foo", "bar");
 	 * 3. Define the request method and make a call to the client
 	 *    i.e client.get(apiUrl, params, handler); */
-	public void getHomeTimeline(int page, JsonHttpResponseHandler handler) {
+	public void getHomeTimeline(JsonHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("count",25);
 		params.put("since_id",1);
+		client.get(apiUrl, params, handler);
+	}
+
+	public void publishTweet(String tweetContent, JsonHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/update.json");
+		RequestParams params = new RequestParams();
+		params.put("status",tweetContent);
+		client.post(apiUrl, params,"", handler);
+	}
+
+	public void getNextPageOfTweets(long max_id, JsonHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/home_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count",25);
+		params.put("max_id",max_id);
 		client.get(apiUrl, params, handler);
 	}
 
