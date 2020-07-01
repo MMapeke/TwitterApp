@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.ComposeActivity;
@@ -50,7 +51,8 @@ public class TimelineActivity extends AppCompatActivity {
 
         client = TwitterApp.getRestClient(this);
 
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer = findViewById(R.id.swipeContainer);
+
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -70,7 +72,7 @@ public class TimelineActivity extends AppCompatActivity {
         });
 
         // find the recycler view
-        rvTweets = findViewById(R.id.rvTweets);
+        rvTweets = (RecyclerView) findViewById(R.id.rvTweets);
         // init the list of tweets and adapter
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this,tweets);
