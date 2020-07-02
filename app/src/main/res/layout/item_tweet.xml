@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="8dp"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/tvBody"
-        android:autoLink="all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvScreenName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:autoLink="all"
         tools:text="This is my sample text!!" />
 
 
@@ -46,6 +48,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:textColor="#000000"
+        android:textStyle="bold"
         tools:text="usrname1234" />
 
     <TextView
@@ -59,5 +63,22 @@
         android:layout_marginRight="16dp"
         android:text="TextView"
         tools:text="9 hours" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        android:text="TextView" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/tweetPic"
+        android:layout_margin="8dp"
+        android:background="#B8B8B8" />
 
 </RelativeLayout>
