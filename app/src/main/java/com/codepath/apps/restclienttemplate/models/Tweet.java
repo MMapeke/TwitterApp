@@ -1,7 +1,14 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import android.provider.ContactsContract;
 import android.text.format.DateUtils;
 import android.util.Log;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,14 +22,25 @@ import java.util.List;
 import java.util.Locale;
 
 @Parcel
+@Entity(foreignKeys = @ForeignKey(entity= User.class, parentColumns="id", childColumns="userID"))
 public class Tweet {
 
-    public String relativeTime;
-    public String body;
-    public String createdAt;
-    public String imageUrl;
-    public User user;
+    @ColumnInfo
+    @PrimaryKey
     public long id;
+    @ColumnInfo
+    public String body;
+    @ColumnInfo
+    public String createdAt;
+    @ColumnInfo
+    public Long userID;
+    @Ignore
+    public User user;
+    @ColumnInfo
+    public String relativeTime;
+    @Ignore
+    public String imageUrl;
+
 
     //empty constructor for parcel
     public Tweet(){}
@@ -31,7 +49,9 @@ public class Tweet {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
+        tweet.userID = user.id;
         tweet.id = jsonObject.getLong("id");
         tweet.relativeTime = getRelativeTimeAgo(jsonObject.getString("created_at"));
 

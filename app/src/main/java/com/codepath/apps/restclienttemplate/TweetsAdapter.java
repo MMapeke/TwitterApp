@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import java.util.List;
@@ -75,7 +77,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
             if(tweet.imageUrl != null){
                 //if image there se the tweetImage
-                Glide.with(context).load(tweet.imageUrl).into(tweetImage);
+                Glide.with(context)
+                        .load(tweet.imageUrl)
+//                        .transform(new RoundedCorners(25))
+                        .into(tweetImage);
             }else{
                 //otherwise set to gone
                 tweetImage.setVisibility(View.GONE);
